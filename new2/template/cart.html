@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+    {% load static %}
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        span{
+            margin-left: 10px; display: inline-block; width: 10%;
+        }
+        .span1{
+            width: 35%;
+        }
+        .d1{
+            background-color: azure; width: 80%; margin-left: 10%; margin-top: 20px;
+            border: 1px paleturquoise solid; border-radius: 5px;
+        }
+        .b1{
+            margin-left: 22%; width: 70px; margin-bottom: 5px; padding: 3px 2px; 
+            display: inline-block; border: 1px solid red; border-radius: 1px; box-sizing: border-box;
+        }
+        .b2{
+            margin-left: 90%; width: 170px; margin-bottom: 5px; padding: 3px 2px; 
+            display: inline-block; border: 1px solid green; border-radius: 1px; box-sizing: border-box;
+        }
+        .l1:link, .l1:visited {
+            background-color: green; opacity: 96%; color: whitesmoke;  font-size: 25px; font-family: 'arial rounded mt'; 
+            width: 180px; height: 40px; font-weight: bolder; text-align: center; text-decoration: none; display: inline-block; margin-left: 500px;
+        }
+        .l1:hover, .l1:active {
+            background-color: green; opacity: 100%;
+        }
+        h2{
+            font-family: Arial; text-align: center;
+        }
+    </style>
+</head>
+<body>
+    
+    <h2>This is your cart section {{uname0}}</h2>
+    <div class="d1">
+       <br> <span class="span1">Name</span>  <span>Size</span>  <span>Price</span> <span>Quantity</span> <br><br>
+    </div>
+    {% for obj1 in obj1 %}
+    <form method="POST" action="/prorem/">
+        <input type="hidden" value="{{obj1.id}}" name="objname"> 
+        {% csrf_token %}
+       
+    <div class="d1">
+    <br><span class="span1">{{obj1.name}}  </span>  <span>{{obj1.size}}</span>  <span>{{obj1.price2}}  </span>  <span><input type="submit" name="btn" value="-"> {{obj1.quantity}} <input name="btn" type="submit" value="+"></span>
+
+    <input class="b1" type="submit"  name="btn" value="remove" ><br><br>
+    </div>
+</form>
+    {% endfor %}
+    <div class="d1">
+    <br><span class="span1"></span>  <span>Total : </span>  <span>{{tprice}}  </span>  <span></span><br><br>
+    </div>
+    <br><br>
+    
+    {% for t in proimg %}
+    <img src="{{t.image.url}}" width="20px" height="20px">
+    {% endfor %}
+   <span><a class="l1" href="/order/">Buy Now</a></span>
+    
+</body>
+</html>

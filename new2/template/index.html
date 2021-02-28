@@ -1,0 +1,121 @@
+{% load static %}
+{% csrf_token %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/a.css' %}" >
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script src='https://kit.fontawesome.com/a076d05399.js' crossorigin='anonymous'></script>
+    <title>Document</title>
+    <style>
+        body
+        {
+            font-family: 'Poppins','sans-serif';
+            background: radial-gradient(white,#ffd6d6);
+            overflow-x: hidden;
+            
+        }
+        .ss1{
+            width: 190px; display: inline-block; margin-right: 10px;
+        }
+    </style>
+
+</head>
+
+<body>
+   
+<div class="big"> 
+    <div class="header">       
+		<div class="logo"><img src="{% static 'images/logo.png' %}" width="180px">
+        </div>
+        <div class="search"><form method="POST" action="/search/"> {% csrf_token %}                
+            <input class="bbs" type="text" name="search" placeholder="search"> <input class="bs1" type="submit" value="search"></form>
+        </div>
+        
+        <div class="menu">
+            
+			<ul class="head">
+                <span class="ss1">Hello {{userid}}</span> <li><a href="/delete/" style="text-decoration: none;color: black" >{{userid1}}</a></li> 
+                <li><a href="/sign/" style="text-decoration: none;color: black" >Sing Up</a></li>
+                <li><a href="/cart/" style="text-decoration: none;color: black" >Cart</a>
+                <img src="{% static 'images/cart.png' %}" width="30px" height="30px"></li>
+
+				<li><a href="/ordershow/" style="text-decoration: none;color: black" >Orders</a></li>
+                <li><a href="#" style="text-decoration: none;color: black" >About Us</a></li>
+                
+                
+            </ul> 
+            <!-- <img src="{% static 'images/cart.png' %}" width="30px" height="30px"> -->
+		</div>
+    </div>
+
+    <div class="a1">
+        <img src="{% static 'images/image1.png' %}">
+    </div>
+
+    <div class="a2">
+        <h1>Give your workout<br> A new style!</h1><br>
+        <p>Success isn't about greatness. It's about consistency, Consistent<br> hard work gains success. Greatness will come.</p>
+    </div>
+    
+    
+    
+    <div class="bcat">
+        <h2 style="margin-top: 350px;">   Categories</h2>
+        
+        {% for category in cat %}
+        <div class="cat">
+                
+                <a href="/scnd/{{category.id}}"><img src="{{category.image.url}}" width="270" height="360" ><br><span class="pro2">{{category.name}}</span></a>
+                
+            </div>
+	{% endfor %}
+   
+    </div>
+
+    <div class="bcat">
+        
+        <h2 style="margin-top: 110px;"> Trending Products</h2>
+        {% for product in trend %}
+	    <div class="cat">
+            <a href="/third/{{product.id}}">
+	    	<img  src="{{product.image.url}}"  width="270" height="310">
+	    	<span class="pro2">{{product.name}}</span>
+            <span class="pro2">Rs. {{product.price}}</span></a>			
+        </div>
+        
+    {% endfor %}
+    </div>
+         
+    <div class="abcd">
+        ..
+    </div>
+
+</div>
+<footer class="bg-dark text-center text-white">
+    <!-- Grid container -->
+    <div class="container p-4 pb-0">
+      <!-- Section: Social media -->
+      <section class="mb-4">
+        
+      </section>
+      <!-- Section: Social media -->
+    </div>
+    <!-- Grid container -->
+  
+    <!-- Copyright -->
+    <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2);">
+      © 2021 Copyright:
+      <a class="text-white" href="#">Rohit Sharma</a>
+    </div>
+    <!-- Copyright -->
+  </footer>
+</body>
+</html>

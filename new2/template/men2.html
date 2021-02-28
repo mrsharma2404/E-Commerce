@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% load static %}
+    {% csrf_token %}
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/a.css' %}" >
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <title>abcd</title>
+</head>
+<body>
+    {% for product in men2 %}
+	<div class="pro3" >
+        <br><br>
+            <img src="{{product.image.url}}" width="350px" height="400px"  ><br><br>
+            <img src="{{product.image2.url}}" width="350px" height="400px" ><br><br>
+            <img src="{{product.image3.url}}" width="350px" height="400px" ><br><br>
+    </div>
+		<div class="pro3">
+            <br><br><br><br>
+            <p class="card-title">{{product.name}}</p>
+            <b>Rs. {{product.price}}</b>
+            <p>Size {{product.size}} </p>
+            <p>Status {{product.status}} </p>
+            <p>Stock {{product.stock}} </p>
+            <p>{{product.description}}</p>	
+            <p>{{product.description2}}</p>	
+            <p>{{product.description3}}</p>			
+        </div>
+        <br><br><br><br><br><br><br><br>
+        
+        <a href="/cart/" >{{cart1}}</a><br>
+        <a href="#" >Buy Now</a>
+        <br><br><hr><br><br>
+    {% endfor %}
+    <br><br><hr><br><br><div>
+
+</body>
+</html>
